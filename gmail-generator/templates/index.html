@@ -1,0 +1,64 @@
+<!-- gmail-generator/templates/index.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gmail Address Generator</title>
+    <!-- We will use the 'Poppins' font for a modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <header class="app-header">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            <h1>Gmail Generator</h1>
+        </header>
+
+        <form id="generator-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" placeholder="e.g., Jane Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input type="number" id="quantity" name="quantity" min="1" max="5000" value="10" required>
+                </div>
+            </div>
+            <button type="submit" id="generate-btn">
+                <span>Generate Addresses</span>
+            </button>
+        </form>
+
+        <div class="results-area">
+            <div class="results-header" id="results-header">
+                <h2>Results</h2>
+                <button id="copy-all-btn" class="secondary-btn">Copy All</button>
+            </div>
+            <div class="results-list" id="results-list">
+                <!-- Loader and results will be injected here -->
+                <div class="placeholder">
+                    <p>Your generated emails will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification for copy feedback -->
+    <div id="toast" class="toast"></div>
+
+    <!-- START: NEWLY ADDED FOOTER -->
+    <footer class="page-footer">
+        <p>Created by Nethru Randev Wickramasekara</p>
+    </footer>
+    <!-- END: NEWLY ADDED FOOTER -->
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
